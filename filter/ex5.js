@@ -1,7 +1,7 @@
 /* Array.prototype.filter - Exercice 5
 
 Ecrire une fonction searchWordFilter, qui attends deux paramètres:
-1. un tableau de chaînes (par exemple des noms de produits, de films, etc.)
+1. un tableau de chaînes (par excemple des noms de produits, de films, et.)
 2. un terme de recherche
 
 La fonction doit renvoyer un tableau ne contenant que les éléments dont le nom contient
@@ -39,6 +39,12 @@ Exemple d'entrée:
  */
 
 function searchWordFilter(items, search) {
+  const res = items.filter(function (data) {
+    if (data.toLowerCase().indexOf(search) != -1) {
+      return data
+    }
+  })
+  return res
 }
 
 // Ne pas modifier l'export

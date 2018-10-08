@@ -64,8 +64,26 @@ En prenant les deux exemples d'arguments d'entrée, on obtiendrait ceci en sorti
 */
 
 function getActivitiesMembers(activities, persons) {
+  let tab = []
+  const res = activities.map(function (data1) {
+    let obj = {}
+    obj.activity = data1
+    return obj
+  })
+    .map(function (data2) {
+      let lstPersons = []
+      const res2 = persons.filter(function (data3) {
+        for (act of data3.activities) {
+          if (data2.activity === act) {
+            lstPersons.push(data3.name)
+          }
+        }
+      })
+      data2.persons = lstPersons
+      return data2
+    })
+  return res
 }
-
 
 
 // Ne pas modifier l'export

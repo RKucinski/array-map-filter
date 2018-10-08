@@ -49,8 +49,42 @@ Sortie attendue:
   [{ Bordeaux: 12 }, { Lille: 12 }]
 
 */
+/*
+function getStudentsPerCurriculum(campuses, curriculumName) {
+  campuses.filter(
+    function(item){
+      if (item.curriculums.some
+        (function(underitem){
+        if (item.curriculums.name === curriculumName) return underitem
+      })
+      ) return item
+    }
+  )
+  .map(function(item){
+    return item.city = item.curriculums.numStudents
+  }
+  )
+}*/
 
 function getStudentsPerCurriculum(campuses, curriculumName) {
-}
+  let tabRes = [];
+  const res = campuses.filter(function (data) {
+    for (cur of data.curriculums) {
+      if (cur.name === curriculumName) {
+        return data;
+      }
+    }
+  })
+    .map(function (data) {
+      for (cur of data.curriculums) {
+        if (cur.name === curriculumName) {
+          let obj = {};
+          obj[data.city] = cur.numStudents;
+          return obj;
+        }
+      }
+    });
+  return res;
+};
 
 module.exports = getStudentsPerCurriculum;

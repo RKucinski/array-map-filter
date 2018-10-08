@@ -27,7 +27,27 @@ Sortie attendue:
 */
 
 function filterOffensiveComments(comments, bannedWords) {
+  const res = comments.filter(function(data) {
+      let absentTab = []
+      for (ban of bannedWords) {
+          if (data.toLowerCase().indexOf(ban) === -1) {
+              absentTab.push(true)
+          } else {
+              absentTab.push(false)
+          }
+      }
+      function isTrue(currentValue) {
+          let ret = false
+          if (currentValue) {
+              ret = true
+          }
+          return ret
+      }
+      if (absentTab.every(isTrue)) {
+          return data
+      }
+  })
+  return res
 }
-
 // Ne pas modifier l'export
 module.exports = filterOffensiveComments;
