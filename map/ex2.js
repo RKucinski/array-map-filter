@@ -43,9 +43,11 @@ En sortie: [
  */
 
 function getFoodCategories(foods) {
+  return foods.map(function(foods){
+      if (foods.isVegetarian) return foods.food + " is suitable for vegetarians"
+      return foods.food + " is not suitable for vegetarians"
+  })
 }
-
-
 
 // Ne pas modifier l'export
 module.exports = getFoodCategories;
